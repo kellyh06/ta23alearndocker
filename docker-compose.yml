@@ -1,4 +1,12 @@
 services:
+  app:
+    build:
+      context: .
+      dockerfile: dockerfile
+    ports:
+      - 8000:8000
+    volumes:
+      - ./app:/app
   db:
     image: mariadb
     restart: always
@@ -8,10 +16,12 @@ services:
       - ta23adbdata:/var/lib/mysql
     ports:
       - 33061:3306
+
   adminer:
     image: adminer
     restart: always
     ports:
       - 8080:8080
+
 volumes:
   ta23adbdata:
